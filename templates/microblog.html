@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Micro Blog</title>
+        <link rel="stylesheet" href="/static/css/microblog.css"/>
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="navbar__brand">
+                <img class="navbar__logo" src="/static/microblog-logo.svg" alt="microblog logo"/>MicroBlog
+            </div>
+            <ul class="navbar__navigation">
+                <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
+                <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calander</a></li>
+            </ul>
+        </header>
+        <main class="main">
+            <section>
+                <h1>Add new entry</h1>
+                <form class="form"  method="post">
+                    <p class="form__input">
+                        <label for="entry" class="form__label">Entry Contents</label>
+                        <textarea class="form__textarea" name="content" id="entry"></textarea>
+                    </p>
+                    <button class="form__submit" type="submit">Add Entry</button>
+                </form>
+            </section>
+            <section>
+                <h1>Recent Posts</h1>
+                {% for content, date in entries %}
+                    <article class="entry">
+                        <div>
+                            <h4 class="entry__title"> {{content | truncate(30, true) }}</h4>
+                            <time class="entry__date" datetime= "{{date}}">•  {{date}}</time>
+                        </div>
+                        <p class="entry__content">{{content }}</p>
+                    </article>
+                {% endfor %}
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__content">
+                <section class="footer__left">
+                    <a class="footer__item">Made by Aman Sharma</a>
+                    <a class="footer__item">Check My other Projects</a>
+                </section>
+                <section class="footer__right">
+                    <div class="footer__column">
+                        <a class="footer__item">Recent</a>
+                        <a class="footer__item">Calendar</a>
+                    </div>
+                    <div class="footer__column">
+                        <a class="footer__item">About</a>
+                        <a class="footer__item">How this was made</a>
+                    </div>
+                </section>
+            </div> 
+        </footer>
+    </body>
+    
+</html> 
